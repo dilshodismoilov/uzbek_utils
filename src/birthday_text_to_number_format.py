@@ -1,4 +1,5 @@
 from utility_functions import *
+import datetime
 # split birthday text into parts: day, month, year
 # standard case: ikki ming birinchi yil o'n yettinchi noyabr
 def splitStandard(birthDateText: str):
@@ -21,9 +22,13 @@ def splitStandard(birthDateText: str):
 def birthDateTextToStandard(birthDateText: str):
     splitResult = splitStandard(birthDateText)
     year = numberTextToInt(splitResult[0])
+    if year < 100:
+        year += 1900
     month = months[splitResult[1]]
     day = numberTextToInt(splitResult[2])
-
-    print(f"{year}-{month}-{day}")
+   
+    return datetime.datetime(year, month, day)
+    #print(f"{year}-{month}-{day}")
 
 #birthDateTextToStandard("ikki ming eee ... asdsad birinchi yil o'n yettinchi noyabr")
+print(birthDateTextToStandard("eee nima ediya yo'q to'qson to'qqizinchi yil birinchi iyul"))
