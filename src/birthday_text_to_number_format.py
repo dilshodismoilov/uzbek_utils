@@ -32,7 +32,9 @@ def birthDateTextToStandard(birthDateText: str):
     if len(splitResult[0]) == 0:
         splitResult = splitNoYil(birthDateText)
     year = numberTextToInt(splitResult[0])
-    if year < 100:
+    if year < 20:
+        year += 2000
+    elif year < 100:
         year += 1900
     month = numberTextToInt(splitResult[1])
     if month == 0:
@@ -42,8 +44,8 @@ def birthDateTextToStandard(birthDateText: str):
     return datetime.datetime(year, month, day)
     
 
-# birthDateTextToStandard("ikki ming eee ... asdsad birinchi yil o'n yettinchi noyabr")
-# print(birthDateTextToStandard("eee nima ediya yo'q to'qson to'qqizinchi yil birinchi iyul"))
-# print(birthDateTextToStandard("no'l uch no'l uch ikki ming olti"))
-# print(splitStandard("no'l uch no'l uch ikki ming olti"))
-# print(splitNoYil("no'l uch no'l uch ikki ming olti"))
+
+print(birthDateTextToStandard("eee nima ediya yo'q to'qson to'qqizinchi yil birinchi iyul"))
+print(birthDateTextToStandard("no'l uch no'l uch ikki ming olti"))
+print(birthDateTextToStandard("no'l uch no'l uch eee to'qson to'qqiz"))
+print(birthDateTextToStandard("o'n yetti o'n ikki eee o'n ikki"))
